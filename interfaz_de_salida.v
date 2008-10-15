@@ -1,26 +1,23 @@
 /**
-* Prende y apaga las luces, y le envia el piso y direccion a los displays.
-* @param solicitudes Solicitud de los pisos en el ciclo actual.
-* @param estado El estado actual.
-* @param luces El estado de las luces de todos los botones.
-* @param display_num El numero de los displays.
-* @param display_dir La direccion del ascensor:
-*	~: nada
-*	2: subiendo
-*	3: bajando
-*/
-module INTERFAZ_DE_SALIDA (solicitudes, estado, luces, display_num, display_dir);
-	input [9:0] solicitudes;
+ * Prende y apaga las luces, y le envia el piso y direccion a los displays.
+ *
+ * @param in:pisos     Solicitud de los pisos en el ciclo actual.
+ * @param in:estado    El estado actual.
+ * @param out:luces    El estado de las luces de todos los botones.
+ * @param out:display  La informacion para los displays:
+ * 		- [3:2] piso
+ * 		- [1:0] { 11: subiendo, 10: bajando, 0x: nada }
+ */
+module INTERFAZ_SALIDA (pisos, estado, luces, display);
+	input [9:0] pisos;
 	input [3:0] estado;
 	output [9:0] luces;
-	output [1:0] display_num;
-	output [1:0] display_dir;
+	output [3:0] display;
 
 	reg [9:0] luces;
-	reg [1:0] display_num;
-	reg [1:0] display_dir;
+	reg [3:0] display;
 
-	always@(solicitudes or estado)
+	/*always@(solicitudes or estado)
 	begin
 		luces = solicitudes;
 		display_num[0] = estado[0];
@@ -30,5 +27,5 @@ module INTERFAZ_DE_SALIDA (solicitudes, estado, luces, display_num, display_dir)
 		else
 			display_dir[0] = 1;
 		display_dir[1] = estado[2];
-	end
+	end*/
 endmodule

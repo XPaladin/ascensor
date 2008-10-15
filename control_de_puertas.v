@@ -1,27 +1,29 @@
 /**
 * Abre las puertas si es que le corresponde, es decir, estoy en un piso solicitado y el ascensor no
 * se esta moviendo, y envia un aviso para emitir un sonido en el piso en que corresponda.
-* @param solicitudes Solicitud de los pisos en el ciclo actual.
-* @param estado El estado actual.
-* @param boton_abrir_cerrar Si se esta presionando el boton para abrir o cerrar o ninguno.
-* @param puertas 0 si es que estan cerradas, 1 abiertas, 2 abriendose y 3 cerrandose.
-* @param timeout 1 si es que se genero un timeout con las puertas abiertas.
-* @param sensor Si hay algo entre las puertas o no.
-* @param trabajando Si es que el control de puertas esta trabajando o no.
-* @param salida_puertas Abrir o cerrar las puertas o hacer nada.
+*
+* @param in:pisos            Solicitud de los pisos en el ciclo actual.
+* @param in:estado           El estado actual del ascensor.
+* @param in:boton            Si se esta presionando el boton para abrir o cerrar o ninguno.
+* @param in:puertas          El estado de las puertas.
+* @param in:timeout          Si es que se genero un timeout con las puertas abiertas.
+* @param in:sensor           Si hay algo entre las puertas o no.
+* @param out:aviso           Aviso al piso sonoro al piso adecuado.
+* @param out:salida_puertas  Abrir o cerrar las puertas o hacer nada.
+* @param out:trabajando      Si es que el control de puertas esta trabajando o no.
 */
-module CONTROL_DE_PUERTAS (solicitudes, estado, boton_abrir_cerrar, sensor, puertas, timeout, trabajando, aviso, salida_puertas);
-	input [9:0] solicitudes;
+module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, salida_puertas, trabajando);
+	input [9:0] pisos;
 	input [3:0] estado;
-	input [1:0] boton_abrir_cerrar;
+	input [1:0] boton;
 	input [1:0] puertas;
 	input timeout;
 	input sensor;
-	output trabajando;
 	output [3:0] aviso;
 	output [1:0] salida_puertas;
+	output trabajando;
 
-	reg trabajando;
+	/*reg trabajando;
 	reg [3:0] aviso;
 	reg [1:0] salida_puertas;
 
@@ -59,5 +61,5 @@ module CONTROL_DE_PUERTAS (solicitudes, estado, boton_abrir_cerrar, sensor, puer
 				(e[0] && e[1]) && (s[9] || s[5])
 			);
 		end
-	endfunction
+	endfunction*/
 endmodule

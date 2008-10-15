@@ -1,23 +1,19 @@
 /**
-* Almacena el estado (apretado o no) de los 10 botones para solicitar pisos.
-* @param botones Arreglo con 1 si es que un boton esta apretado.
-* @param anterior El estado de los botones apretados en el estado anterior.
-* @param final El estado de los botones para el estado actual.
-* El arreglo de botones contiene la siguiente informacion:
-*	0: piso 1 arriba
-*	1: piso 2 abajo
-*	2: piso 2 arriba
-*	3: piso 3 abajo
-*	4: piso 3 arriba
-* 	5: piso 4 abajo
-*	6: piso 1 ascensor
-*	7: piso 2 ascensor
-* 	8: piso 3 ascensor
-*	9: piso 4 ascensor
-*/
-module REGISTRADOR (botones, anterior, actual);
-	input [9:0] botones, anterior;
-	output [9:0] actual;
+ * Actualiza el estado de los botones dado los botones.
+ *
+ * Actualiza el estado (apretado o no) de los 10 botones para solicitar pisos
+ * dado los botones que estan siendo apretados actualmente y el estado de los
+ * botones en el ciclo anterior, asi se mantiene en el tiempo aquellas
+ * solicitudes que aun no han sido atendidas.
+ *
+ * @param in:botones              Arreglo con 1 si es que un boton esta apretado.
+ * @param in:solicitudes_inicial  El estado de los botones del ciclo anterior.
+ * @param out:solicitudes_final   El estado de los botones actualizado.
+ */
+module REGISTRADOR (botones, solicitudes_inicial, solicitudes_final);
+	input [9:0] botones;
+	input [9:0] solicitudes_inicial
+	output [9:0] solicitudes_final;
 
-	assign actual = botones | anterior;
+	assign solicitudes_final = botones | solicitudes_inicial;
 endmodule

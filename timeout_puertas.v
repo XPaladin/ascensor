@@ -1,4 +1,4 @@
-module timeout_puertas(puertas, salida);
+module TIMEOUT_PUERTAS (puertas, salida);
 	input [1:0] puertas;
 	output salida;
 

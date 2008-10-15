@@ -9,14 +9,16 @@
 *	2: subiendo
 *	3: bajando
 */
-module interfaz_de_salida(solicitudes, estado, luces, display_num, display_dir);
+module INTERFAZ_DE_SALIDA (solicitudes, estado, luces, display_num, display_dir);
 	input [9:0] solicitudes;
 	input [3:0] estado;
 	output [9:0] luces;
-	output [1:0] display_num, display_dir;
+	output [1:0] display_num;
+	output [1:0] display_dir;
 
 	reg [9:0] luces;
-	reg [1:0] display_num, display_dir;
+	reg [1:0] display_num;
+	reg [1:0] display_dir;
 
 	always@(solicitudes or estado)
 	begin

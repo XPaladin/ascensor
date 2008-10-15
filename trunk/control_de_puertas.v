@@ -10,7 +10,7 @@
 * @param trabajando Si es que el control de puertas esta trabajando o no.
 * @param salida_puertas Abrir o cerrar las puertas o hacer nada.
 */
-module control_de_puertas(solicitudes, estado, boton_abrir_cerrar, sensor, puertas, timeout, trabajando, aviso, salida_puertas);
+module CONTROL_DE_PUERTAS (solicitudes, estado, boton_abrir_cerrar, sensor, puertas, timeout, trabajando, aviso, salida_puertas);
 	input [9:0] solicitudes;
 	input [3:0] estado;
 	input [1:0] boton_abrir_cerrar;

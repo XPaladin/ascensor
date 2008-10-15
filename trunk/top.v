@@ -16,3 +16,17 @@
 *	2: direccion en la que va (1 arriba, 0 abajo)
 *	3: si se esta moviendo o no (1 si, 0 no)
 */
+module TOP (botones, cambio_piso, boton_abrir_cerrar, sensor_puertas, puertas_abiertas, luces, display_num, display_dir, aviso, puertas, motor)
+	input [9:0] botones;
+	input [1:0] boton_abrir_cerrar;
+	input [1:0] puertas_abiertas;
+	input cambio_piso, sensor_puertas;
+	output [9:0] luces;
+	output [1:0] display_num;
+	output [1:0] display_dir;
+	output [3:0] aviso;
+	output [1:0] puertas;
+	output [1:0] motor;
+	
+	REGISTRADOR registrador ()
+endmodule

@@ -15,7 +15,7 @@
 * 	8: piso 3 ascensor
 *	9: piso 4 ascensor
 */
-module registrador (botones, anterior, actual);
+module REGISTRADOR (botones, anterior, actual);
 	input [9:0] botones, anterior;
 	output [9:0] actual;
 

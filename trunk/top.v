@@ -16,17 +16,30 @@
 *	2: direccion en la que va (1 arriba, 0 abajo)
 *	3: si se esta moviendo o no (1 si, 0 no)
 */
-module TOP (botones, cambio_piso, boton_abrir_cerrar, sensor_puertas, puertas_abiertas, luces, display_num, display_dir, aviso, puertas, motor)
+/**
+ * Modulo que contiene a todos los otros.
+ *
+ * @param in:botones         Los botones de solicitudes de pisos apretados.
+ * @param in:boton_puertas   Si hay botones que controlen las puertas apretados.
+ * @param in:estado_puertas  El estado de movimiento de las puertas.
+ * @param in:sensor_piso     Sensor que hubo un cambio de piso.
+ * @param in:sensor_puertas  Sensor de objetos entre las puertas.
+ * @param out:luces          El estado de las luces de los botones.
+ * @param out:display        El estado de los displays de los pisos.
+ * @param out:aviso          Que bocina debe sonar marcando la llegada del ascensor.
+ * @param out:puertas        Lo que deben hacer las puertas.
+ * @param out:motor          Lo que debe hacer el motor.
+ */
+module TOP (botones, boton_puertas, estado_puertas, sensor_piso, sensor_puertas, luces, display, aviso, puertas, motor)
 	input [9:0] botones;
-	input [1:0] boton_abrir_cerrar;
-	input [1:0] puertas_abiertas;
-	input cambio_piso, sensor_puertas;
+	input [1:0] boton_puertas;
+	input [1:0] estado_puertas;
+	input sensor_piso;
+	input sensor_puertas;
 	output [9:0] luces;
-	output [1:0] display_num;
-	output [1:0] display_dir;
+	output [3:0] display;
 	output [3:0] aviso;
 	output [1:0] puertas;
 	output [1:0] motor;
 	
-	REGISTRADOR registrador ()
 endmodule

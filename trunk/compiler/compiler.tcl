@@ -11,8 +11,7 @@ elaborate TOP
 check_design
 
 # Constraints
-create_clock clk -p 5
-set_max_area 5
+#set_max_area 5
 
 # Compile
 #compile_ultra
@@ -20,4 +19,5 @@ compile
 
 # Save and exit
 write -f verilog -hier -out mapped.v
+
 exit

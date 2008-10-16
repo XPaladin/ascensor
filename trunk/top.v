@@ -74,7 +74,7 @@ module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas,
 	REGISTRADOR 			mod1 (botones, algo_sf, reg_sf);
 	ALGORITMO 			 	mod3 (rsol_sf, rest_ef, cambio_piso, puer_tr, clk, algo_sf, algo_ef, motor);
 	TIMEOUT					mod5 (estado_puertas, clk, time_time);
-	CONTROL_PUERTAS			mod7 (rsol_sf, rest_ef, boton_puertas, estado_puertas, time_time, sensor_puertas, aviso, puertas, puer_tr);
+	CONTROL_PUERTAS			mod7 (rsol_sf, rest_ef, botones, boton_puertas, estado_puertas, time_time, sensor_puertas, aviso, puertas, puer_tr);
 	REGISTRO_SOLICITUDES 	mod2 (reg_sf, clk, rsol_sf);
 	REGISTRO_ESTADO			mod4 (algo_ef, clk, rest_ef);
 	// Salida a las luces y al display

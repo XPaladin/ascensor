@@ -32,7 +32,7 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 		begin
 			if(!estado_inicial[3])//quieto
 			begin
-				if(e[1])//subiendo
+				if(estado_inicial[1])//subiendo
 				begin
 					case (estado_inicial[1:0])//piso
 						2'b00://piso 1

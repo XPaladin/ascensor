@@ -11,7 +11,7 @@ elaborate TOP
 check_design
 
 # Constraints
-create_clock clk -p 5
+# create_clock clk -p 5
 set_max_area 5
 
 # Compile

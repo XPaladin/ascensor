@@ -24,13 +24,14 @@
  * @param in:estado_puertas  El estado de movimiento de las puertas.
  * @param in:cambio_piso     Sensor que hubo un cambio de piso.
  * @param in:sensor_puertas  Sensor de objetos entre las puertas.
+ * @param in:clk             El reloj.
  * @param out:luces          El estado de las luces de los botones.
  * @param out:display        El estado de los displays de los pisos.
  * @param out:aviso          Que bocina debe sonar marcando la llegada del ascensor.
  * @param out:puertas        Lo que deben hacer las puertas.
  * @param out:motor          Lo que debe hacer el motor.
  */
-module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas, luces, display, aviso, puertas, motor, clk);
+module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas, clk, luces, display, aviso, puertas, motor);
 	input [9:0] botones;
 	input [1:0] boton_puertas;
 	input [1:0] estado_puertas;
@@ -53,7 +54,7 @@ module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas,
 	wire time_time;
 
 	REGISTRADOR 			mod1 (botones, algo_sf, reg_sf);
-	ALGORITMO 			 	mod3 (rsol_sf, rest_ef, cambio_piso, puer_tr, algo_sf, algo_ef, motor);
+	ALGORITMO 			 	mod3 (rsol_sf, rest_ef, cambio_piso, puer_tr, clk, algo_sf, algo_ef, motor);
 	TIMEOUT					mod5 (estado_puertas, time_time);
 	CONTROL_PUERTAS			mod7 (rsol_sf, rest_ef, boton_puertas, estado_puertas, time_time, sensor_puertas, aviso, puertas, puer_tr);
 	REGISTRO_SOLICITUDES 	mod2 (reg_sf, clk, rsol_sf);

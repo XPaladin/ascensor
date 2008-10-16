@@ -9,4 +9,9 @@ module REGISTRO_SOLICITUDES (D, clk, Q);
 	input [9:0] D;
 	input clk;
 	output [9:0] Q;
+
+	reg [9:0] Q;
+
+	always@(posedge clk)
+		Q = D;
 endmodule

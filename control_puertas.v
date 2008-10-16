@@ -23,13 +23,13 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 	output [1:0] salida_puertas;
 	output trabajando;
 
-	/*reg trabajando;
+	reg trabajando;
 	reg [3:0] aviso;
 	reg [1:0] salida_puertas;
 
-	always@(solicitudes or estado or boton_abrir_cerrar or sensor or puertas)
+	always@(pisos or estado or boton or timeout or sensor or puertas)
 	begin
-		if ((puertas[0] || puertas[1]) || !estado[3] && PISO_SOLICITADO(solicitudes, estado))
+		if ((puertas[0] || puertas[1]) || !estado[3] && PISO_SOLICITADO(pisos, estado))
 		begin
 			trabajando = 1;
 			if (puertas == 2'b00)
@@ -39,8 +39,8 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 				else if (estado == 4'b10xx) aviso = 4'b0010;
 				else aviso = 4'b0001;
 			end
-			if (puertas == 2'b00 || puertas == 2'b10 || (puertas == 2'b11 && boton_abrir_cerrar == 2'b1x)) salida_puertas = 2'b01;
-			else if (puertas == 2'b01 && (boton_abrir_cerrar == 2'bx1 || timeout)) salida_puertas = 2'b10;
+			if (puertas == 2'b00 || puertas == 2'b10 || (puertas == 2'b11 && boton == 2'b1x)) salida_puertas = 2'b01;
+			else if (puertas == 2'b01 && (boton == 2'bx1 || timeout)) salida_puertas = 2'b10;
 			else salida_puertas = 2'b00;
 		end
 		else
@@ -61,5 +61,5 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 				(e[0] && e[1]) && (s[9] || s[5])
 			);
 		end
-	endfunction*/
+	endfunction
 endmodule

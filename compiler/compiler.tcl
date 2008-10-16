@@ -11,7 +11,7 @@ elaborate TOP
 check_design
 
 # Constraints
-#set_max_area 5
+set_max_area 5
 
 # Compile
 #compile_ultra

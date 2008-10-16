@@ -47,15 +47,15 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 			trabajando = 1;
 			if (puertas == 2'b00)//puertas cerradas
 			begin
-				if (estado == 4'b00xx) aviso = 4'b1000; //piso 1
-				else if (estado == 4'b01xx) aviso = 4'b0100; // piso 2
-				else if (estado == 4'b10xx) aviso = 4'b0010; // piso 3
+				if (estado[3:2] == 2'b00) aviso = 4'b1000; //piso 1
+				else if (estado[3:2] == 2'b01) aviso = 4'b0100; // piso 2
+				else if (estado[3:2] == 2'b10) aviso = 4'b0010; // piso 3
 				else aviso = 4'b0001; //piso 4
 			end
-			if (puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton == 2'b1x || sensor))) 
+			if (puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton[1] == 1'b1 || sensor))) 
 			//puertas cerradas o abriendose || (cerrandose && (boton abrir || sensor))
 				salida_puertas = 2'b01; //abrir puertas
-			else if ((puertas == 2'b01 && (boton == 2'b1x || timeout)) || puertas== 2'b10)
+			else if ((puertas == 2'b01 && (boton[1] == 1'b1 || timeout)) || puertas== 2'b10)
 			//puertas (abiertas && (boton cerrar || timeout)) || puertas cerrandose 
 				salida_puertas = 2'b10; //cerrar puertas
 			else salida_puertas = 2'b00; //hacer nada

@@ -12,21 +12,20 @@
  * @param in:esperar              Si hay que esperar porque las puertas estan abiertas.
  * @param in:clk                  El reloj.
  * @param out:estado_final        El estado del ascensor luego de ejecutar el algoritmo.
- * @param out:motor               La instruccion al motor.
  */
-module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final, motor);
+module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 	input [9:0] s;
 	input [3:0] estado_inicial;
 	input cambio_piso;
 	input esperar;
 	input clk;
 	output [3:0] estado_final;
-	output [1:0] motor;
 	
 	reg piso_actual;
 	
 	always@(posedge clk)
 	begin
+		estado_final=estado_inicial;
 		piso_actual=estado_inicial[1];
 		if(!esperar)
 		begin
@@ -38,35 +37,79 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final, mo
 						2'b00://piso 1
 						begin
 							if( |s[5:1] || |s[7:9])//algun piso que no sea el 1 solicitado
-								motor=2'b10;//sube
+								estado_final[3]=1;//muevete
 						end
 						2'b01://piso 2
 						begin
 							if( |s[5:3] || |s[8:9])//solicitudes mas arriba
-								motor=2'b10; //sube
+								estado_final[3]=1;//muevete
 							else
 								if( s[0] || s[6]) //solicitudes piso 1
 								begin
-									motor=2'b01;//baja
+									estado_final[3]=1;//muevete
 									estado_final[2]=0;//bajando
 								end
 						end
 						2'b10://piso 3
-						begin
+						begin  
 							if( s[5] || s[9]) //piso 4 solicitado
-								motor=2'b10;
+								estado_final[3]=1;//muevete
 							else
-								if( |s[2:0] || |s[7:6] )
+								if( |s[2:0] || |s[7:6] )//pisos abajo solicitados
 								begin
-									motor=2'b01;//baja
+									estado_final[3]=1;//muevete
 									estado_final[2]=0;//bajando
+								end
+						end
+						2'b11://piso 4
+						begin
+							if( |s[4:0] || |s[8:6] )//solicitudes abajo
+							begin
+								estado_final[3]=1;//muevete
+								estado_final[2]=0;//bajando
+							end
+						end
+				end
+				else//bajando
+				begin
+					case (estado_inicial[1:0])//piso
+						2'b00://piso 1
+						begin
+							if( |s[5:1] || |s[7:9])//algun piso que no sea el 1 solicitado
+							begin
+								estado_final[3]=1; //muevete
+								estado_final[2]=1; //subiendo
+							end
+						end
+						2'b01://piso 2
+						begin
+							if( s[0] || s[6]) //solicitudes piso 1
+							begin
+								estado_final[3]=1;//muevete
+							end
+							else
+								if( |s[5:3] || |s[8:9])//solicitudes mas arriba
+								begin
+									estado_final[3]=1;//muevete
+									estado_final[2]=1;//subiendo
+								end
+						end
+						2'b10://piso 3
+						begin
+							if( |s[2:0] || |s[7:6] )
+								estado_final[3]=1;//muevete
+							else
+								if( s[5] || s[9]) //piso 4 solicitado
+								begin
+									estado_final[2]=1;//subiendo
+									estado_final[3]=1;//muevete
 								end
 						end
 						2'b11://piso 4
 						begin
 							if( |s[4:0] || |s[8:6] )
 							begin
-								motor=2'b01;//baja
+								estado_final[3]=1;//muevete
 								estado_final[2]=0;//bajando
 							end
 						end
@@ -82,8 +125,7 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final, mo
 						estado_final[1:0]=estado_inicial[1:0]-1;
 					if(PISO_SOLICITADO(s,estado_inicial)
 					begin
-						motor = 2'b00 //detener motor
-						estado_final[3] = 0;
+						estado_final[3] = 0;//detente
 					end
 				end
 			end

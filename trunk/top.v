@@ -43,7 +43,13 @@ module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas,
 	output [1:0] motor;
 
 	wire clk;
-	wire reg_sf, rsol_sf, algo_sf, algo_ef, rest_ef, puer_tr, time_time;
+	wire [9:0] reg_sf;
+	wire [9:0] rsol_sf;
+	wire [9:0] algo_sf;
+	wire [3:0] algo_ef;
+	wire [3:0] rest_ef;
+	wire puer_tr;
+	wire time_time;
 
 	REGISTRADOR 			mod1 (botones, algo_sf, reg_sf);
 	REGISTRO_SOLICITUDES 	mod2 (reg_sf, clk, rsol_sf);

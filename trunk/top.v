@@ -42,12 +42,14 @@ module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas,
 	output [1:0] puertas;
 	output [1:0] motor;
 
-	wire Q, R, S, T, U, V, W;
+	wire clk;
+	wire reg_sf, rsol_sf, algo_sf, algo_ef, rest_ef, puer_tr, time_time;
 
-	/*
-	TODO los registros y el clock
-	REGISTRADOR registrador (botones, Q, R);
-	ALGORITMO algoritmo (R, S, cambio_piso, T, Q, U, motor);
-	INTERFAZ_SALIDA interfaz_salida (R, 
-	*/
+	REGISTRADOR 			mod1 (botones, algo_sf, reg_sf);
+	REGISTRO_SOLICITUDES 	mod2 (reg_sf, clk, rsol_sf);
+	ALGORITMO 			 	mod3 (rsol_sf, rest_ef, cambio_piso, puer_tr, algo_sf, algo_ef, motor);
+	REGISTRO_ESTADO			mod4 (algo_ef, clk, rest_ef);
+	TIMEOUT					mod5 (estado_puertas, time_time);
+	INTERFAZ_SALIDA			mod6 (rsol_sf, rest_ef, luces, display);
+	CONTROL_PUERTAS			mod7 (rsol_sf, rest_ef, boton_puertas, estado_puertas, time_time, sensor_puertas, aviso, puertas, puer_tr);
 endmodule

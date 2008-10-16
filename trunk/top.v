@@ -58,6 +58,6 @@ module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas,
 	REGISTRO_SOLICITUDES 	mod2 (reg_sf, clk, rsol_sf);
 	REGISTRO_ESTADO			mod4 (algo_ef, clk, rest_ef);
 	// Salida a las luces y al display
-	luces = reg_sf;
-	display = rest_ef;
+	assign luces = reg_sf;
+	assign display = rest_ef;
 endmodule

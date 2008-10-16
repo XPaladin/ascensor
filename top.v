@@ -1,4 +1,5 @@
 /**
+* El clock sera considerado de 100 hz
 * El estado de los botones se codifica en un arreglo de la siguiente forma:
 *	0: piso 1 arriba
 *	1: piso 2 abajo
@@ -15,6 +16,23 @@
 *	1: bit 2 del piso actual
 *	2: direccion en la que va (1 arriba, 0 abajo)
 *	3: si se esta moviendo o no (1 si, 0 no)
+* Boton
+*	 -1x abrir
+*	 -01 cerrar
+*	 -00 nada
+* Puertas
+*	-00 completamente cerradas
+*	-01 completamente abiertas
+*	-10 puertas cerrandose
+*	-11 puertas abriendose
+* Sensor
+*	-1 sensado
+*	-0 nada
+* Salida_puertas
+*	-01 abrir
+*	-10 cerrar
+*	-00 nada
+*
 */
 /**
  * Modulo que contiene a todos los otros.

@@ -13,14 +13,20 @@ module TIMEOUT (estado, clk, timeout);
 	output timeout;
 
 	reg timeout;
+	reg [9:0] count;
 
-	always@(estado)
+	always@(posedge clk)
 	begin
 		if (estado == 2'b01)
 		begin
-			//#100 // ojala que salga de aca cuando cambian las puertas
-			timeout = 1;
+			count = count + 1;
 		end
+		else
+		begin
+			count = 0;
+		end
+		if (count == 1000)
+			timeout = 1;
 		else
 			timeout = 0;
 	end

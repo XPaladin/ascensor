@@ -9,4 +9,9 @@ module REGISTRO_ESTADO (D, clk, Q);
 	input [3:0] D;
 	input clk;
 	output [3:0] Q;
+
+	reg [3:0] Q;
+
+	always@(posedge clk)
+		Q = D;
 endmodule

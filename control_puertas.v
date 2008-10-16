@@ -75,11 +75,11 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 				(!e[0] && !e[1]) && (s[6] || s[0]) ||
 				//piso 1 && (dentro o fuera llaman)
 				(!e[0] && e[1]) && (s[7] || (s[1] && !e[2]) || (s[2] && e[2])) ||
-				//piso 2 && (dentro o (hacia abajo y bajando) o (hacia arriba y subiendo)
+				//piso 2 && (dentro o (hacia abajo y bajando) o (hacia arriba y subiendo))
 				(e[0] && !e[1]) && (s[8] || (s[3] && !e[2]) || (s[4] && e[2])) ||
-				//piso 3 && (dentro o (abajo y bajando) o (arriba y subiendo)
+				//piso 3 && (dentro o (abajo y bajando) o (arriba y subiendo))
 				(e[0] && e[1]) && (s[9] || s[5])
-				//
+				//piso 4 && (dentro o bajando)
 			);
 		end
 	endfunction

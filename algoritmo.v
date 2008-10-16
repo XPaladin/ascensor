@@ -125,7 +125,7 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 						estado_final[1:0]=estado_inicial[1:0]+1;
 					else
 						estado_final[1:0]=estado_inicial[1:0]-1;
-					if(PISO_SOLICITADO(s,estado_inicial)
+					if(PISO_SOLICITADO(s,estado_inicial))
 					begin
 						estado_final[3] = 0;//detente
 					end
@@ -135,18 +135,18 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 	end
 
 	function PISO_SOLICITADO;
-		input [9:0] s;
+		input [9:0] o;
 		input [3:0] e;
 
 		begin
 			PISO_SOLICITADO = (
-				(!e[0] && !e[1]) && (s[6] || s[0]) ||
+				(!e[0] && !e[1]) && (o[6] || o[0]) ||
 				//piso 1 && (dentro o fuera llaman)
-				(!e[0] && e[1]) && (s[7] || (s[1] && !e[2]) || (s[2] && e[2])) ||
+				(!e[0] && e[1]) && (o[7] || (o[1] && !e[2]) || (o[2] && e[2])) ||
 				//piso 2 && (dentro o (hacia abajo y bajando) o (hacia arriba y subiendo))
-				(e[0] && !e[1]) && (s[8] || (s[3] && !e[2]) || (s[4] && e[2])) ||
+				(e[0] && !e[1]) && (o[8] || (o[3] && !e[2]) || (o[4] && e[2])) ||
 				//piso 3 && (dentro o (abajo y bajando) o (arriba y subiendo))
-				(e[0] && e[1]) && (s[9] || s[5])
+				(e[0] && e[1]) && (o[9] || o[5])
 				//piso 4 && (dentro o bajando)
 			);
 		end

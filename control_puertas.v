@@ -38,7 +38,7 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 	reg trabajando;
 	reg [3:0] aviso;
 	reg [1:0] salida_puertas;
-:
+	
 	always@(pisos or estado or boton or sensor or puertas or timeout)
 	begin
 		if ((puertas[0] || puertas[1]) || (!estado[3] && PISO_SOLICITADO(pisos, estado)))

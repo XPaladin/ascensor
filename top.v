@@ -30,19 +30,20 @@
  * @param out:puertas        Lo que deben hacer las puertas.
  * @param out:motor          Lo que debe hacer el motor.
  */
-module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas, luces, display, aviso, puertas, motor);
+module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas, luces, display, aviso, puertas, motor, clk);
 	input [9:0] botones;
 	input [1:0] boton_puertas;
 	input [1:0] estado_puertas;
 	input cambio_piso;
 	input sensor_puertas;
+	input clk;
 	output [9:0] luces;
 	output [3:0] display;
 	output [3:0] aviso;
 	output [1:0] puertas;
 	output [1:0] motor;
 
-	wire clk;
+	//wire clk;
 	wire [9:0] reg_sf;
 	wire [9:0] rsol_sf;
 	wire [9:0] algo_sf;

@@ -21,8 +21,9 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 	input clk;
 	output [3:0] estado_final;
 	
+	reg [3:0] estado_final;
 	reg piso_actual;
-	
+
 	always@(posedge clk)
 	begin
 		estado_final=estado_inicial;

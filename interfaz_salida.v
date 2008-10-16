@@ -17,15 +17,14 @@ module INTERFAZ_SALIDA (pisos, estado, luces, display);
 	reg [9:0] luces;
 	reg [3:0] display;
 
-	/*always@(solicitudes or estado)
+	always@(pisos or estado)
 	begin
-		luces = solicitudes;
-		display_num[0] = estado[0];
-		display_num[1] = estado[1];
-		if (~|solicitudes && !estado[3])
-			display_dir[0] = 0;
+		luces = pisos;
+		display[3:2] = estado;
+		if (~|pisos && !estado[3])
+			display[0] = 0;
 		else
-			display_dir[0] = 1;
-		display_dir[1] = estado[2];
-	end*/
+			display[0] = 1;
+		display[1] = estado[2];
+	end
 endmodule

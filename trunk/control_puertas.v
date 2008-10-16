@@ -53,7 +53,7 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 				else aviso = 4'b0001; //piso 4
 			end
 			if (puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton == 2'b1x || sensor)) 
-			//puertas cerradas o abriendose || (cerrandose && (boton abrir || sensor)
+			//puertas cerradas o abriendose || (cerrandose && (boton abrir || sensor))
 				salida_puertas = 2'b01; //abrir puertas
 			else if ((puertas == 2'b01 && (boton == 2'b1x || timeout) || puertas== 2'b10)
 			//puertas (abiertas && (boton cerrar || timeout)) || puertas cerrandose 
@@ -73,9 +73,13 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 		begin
 			PISO_SOLICITADO = (
 				(!e[0] && !e[1]) && (s[6] || s[0]) ||
+				//piso 1 && (dentro o fuera llaman)
 				(!e[0] && e[1]) && (s[7] || (s[1] && !e[2]) || (s[2] && e[2])) ||
+				//piso 2 && (dentro o (hacia abajo y bajando) o (hacia arriba y subiendo)
 				(e[0] && !e[1]) && (s[8] || (s[3] && !e[2]) || (s[4] && e[2])) ||
+				//piso 3 && (dentro o (abajo y bajando) o (arriba y subiendo)
 				(e[0] && e[1]) && (s[9] || s[5])
+				//
 			);
 		end
 	endfunction

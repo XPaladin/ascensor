@@ -14,12 +14,12 @@
  * @param out:estado_final        El estado del ascensor luego de ejecutar el algoritmo.
  * @param out:motor               La instruccion al motor.
  */
-module ALGORITMO (solicitudes_inicial, estado_inicial, cambio_piso, esperar, solicitudes_final, estado_final, motor)
+module ALGORITMO (solicitudes_inicial, estado_inicial, cambio_piso, esperar, solicitudes_final, estado_final, motor);
 	input [9:0] solicitudes_inicial;
 	input [3:0] estado_inicial;
 	input cambio_piso;
-	input esperar
+	input esperar;
 	output [9:0] solicitudes_final;
 	output [3:0] estado_final;
-	output [1:0] motor
+	output [1:0] motor;
 endmodule

@@ -12,7 +12,7 @@
  */
 module REGISTRADOR (botones, solicitudes_inicial, solicitudes_final);
 	input [9:0] botones;
-	input [9:0] solicitudes_inicial
+	input [9:0] solicitudes_inicial;
 	output [9:0] solicitudes_final;
 
 	assign solicitudes_final = botones | solicitudes_inicial;

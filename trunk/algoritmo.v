@@ -69,6 +69,7 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 								estado_final[2]=0;//bajando
 							end
 						end
+					endcase
 				end
 				else//bajando
 				begin
@@ -113,6 +114,7 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 								estado_final[2]=0;//bajando
 							end
 						end
+					endcase
 				end
 			end
 			else //moviendose

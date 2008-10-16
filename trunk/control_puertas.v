@@ -5,11 +5,23 @@
 * @param in:pisos            Solicitud de los pisos en el ciclo actual.
 * @param in:estado           El estado actual del ascensor.
 * @param in:boton            Si se esta presionando el boton para abrir o cerrar o ninguno.
-* @param in:puertas          El estado de las puertas.
+* 								-1x abrir
+* 								-01 cerrar
+* 								-00 nada
+* @param in:puertas          El estado de las puertas:
+* 								-00 completamente cerradas
+* 								-01 completamente abiertas
+* 								-10 puertas cerrandose
+* 								-11 puertas abriendose
 * @param in:timeout          Si es que se genero un timeout con las puertas abiertas.
 * @param in:sensor           Si hay algo entre las puertas o no.
+* 								-1 sensado
+* 								-0 nada
 * @param out:aviso           Aviso al piso sonoro al piso adecuado.
 * @param out:salida_puertas  Abrir o cerrar las puertas o hacer nada.
+* 								-01 abrir
+* 								-10 cerrar
+* 								-00 nada
 * @param out:trabajando      Si es que el control de puertas esta trabajando o no.
 */
 module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, salida_puertas, trabajando);
@@ -27,23 +39,28 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 	reg [3:0] aviso;
 	reg [1:0] salida_puertas;
 
-	always@(pisos or estado or boton or timeout or sensor or puertas)
+	always@(pisos or estado or boton or sensor or puertas)
 	begin
-		if ((puertas[0] || puertas[1]) || !estado[3] && PISO_SOLICITADO(pisos, estado))
+		if ((puertas[0] || puertas[1]) || (!estado[3] && PISO_SOLICITADO(pisos, estado)))
+		// puertas abiertas o (no moviendose y este es un piso solicitado) 
 		begin
 			trabajando = 1;
-			if (puertas == 2'b00)
+			if (puertas == 2'b00)//puertas cerradas
 			begin
-				if (estado == 4'b00xx) aviso = 4'b1000;
-				else if (estado == 4'b01xx) aviso = 4'b0100;
-				else if (estado == 4'b10xx) aviso = 4'b0010;
-				else aviso = 4'b0001;
+				if (estado == 4'b00xx) aviso = 4'b1000; //piso 1
+				else if (estado == 4'b01xx) aviso = 4'b0100; // piso 2
+				else if (estado == 4'b10xx) aviso = 4'b0010; // piso 3
+				else aviso = 4'b0001; //piso 4
 			end
-			if (puertas == 2'b00 || puertas == 2'b10 || (puertas == 2'b11 && boton == 2'b1x)) salida_puertas = 2'b01;
-			else if (puertas == 2'b01 && (boton == 2'bx1 || timeout)) salida_puertas = 2'b10;
-			else salida_puertas = 2'b00;
+			if (puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton == 2'b1x || sensor)) 
+			//puertas cerradas o abriendose || (cerrandose && (boton abrir || sensor)
+				salida_puertas = 2'b01; //abrir puertas
+			else if ((puertas == 2'b01 && (boton == 2'b1x || timeout) || puertas== 2'b10)
+			//puertas (abiertas && (boton cerrar || timeout)) || puertas cerrandose 
+				salida_puertas = 2'b10; //cerrar puertas
+			else salida_puertas = 2'b00; //hacer nada
 		end
-		else
+		else //puertas cerradas && (moviendose || piso no solicitado)
 		begin
 			trabajando = 0;
 		end

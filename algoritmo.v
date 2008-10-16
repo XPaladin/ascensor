@@ -11,17 +11,27 @@
  * @param in:cambio_piso          Si hubo un cambio de piso.
  * @param in:esperar              Si hay que esperar porque las puertas estan abiertas.
  * @param in:clk                  El reloj.
- * @param out:solicitudes_final   El estado de las solicitudes luego de ejecutar el algoritmo.
  * @param out:estado_final        El estado del ascensor luego de ejecutar el algoritmo.
  * @param out:motor               La instruccion al motor.
  */
-module ALGORITMO (solicitudes_inicial, estado_inicial, cambio_piso, esperar, clk, solicitudes_final, estado_final, motor);
+module ALGORITMO (solicitudes_inicial, estado_inicial, cambio_piso, esperar, clk, estado_final, motor);
 	input [9:0] solicitudes_inicial;
 	input [3:0] estado_inicial;
 	input cambio_piso;
 	input esperar;
 	input clk;
-	output [9:0] solicitudes_final;
 	output [3:0] estado_final;
 	output [1:0] motor;
+	
+	reg piso_actual;
+	
+	always@(posedge clk)
+	begin
+		piso_actual=estado_inicial[1];
+		i
+		if(piso_actual==cambio_piso)//no he cambiado de piso
+		begin
+			
+		end
+	end
 endmodule

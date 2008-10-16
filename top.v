@@ -17,8 +17,8 @@
 *	2: direccion en la que va (1 arriba, 0 abajo)
 *	3: si se esta moviendo o no (1 si, 0 no)
 * Boton
-*	 -1x abrir
-*	 -01 cerrar
+*	 -01 abrir
+*	 -10 cerrar
 *	 -00 nada
 * Puertas
 *	-00 completamente cerradas

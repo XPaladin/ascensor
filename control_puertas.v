@@ -24,10 +24,11 @@
 * 								-00 nada
 * @param out:trabajando      Si es que el control de puertas esta trabajando o no.
 */
-module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, salida_puertas, trabajando);
+module CONTROL_PUERTAS (pisos, estado,botones, boton, puertas, timeout, sensor, aviso, salida_puertas, trabajando);
 	input [9:0] pisos;
 	input [3:0] estado;
 	input [1:0] boton;
+	input [9:0] botones;
 	input [1:0] puertas;
 	input timeout;
 	input sensor;
@@ -39,7 +40,7 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 	reg [3:0] aviso;
 	reg [1:0] salida_puertas;
 	
-	always@(pisos or estado or boton or sensor or puertas or timeout)
+	always@(pisos or estado or botones or boton or sensor or puertas or timeout)
 	begin
 		if ((puertas[0] || puertas[1]) || (!estado[3] && PISO_SOLICITADO(pisos, estado)))
 		// puertas abiertas o (no moviendose y este es un piso solicitado) 
@@ -52,7 +53,8 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 				else if (estado[3:2] == 2'b10) aviso = 4'b0010; // piso 3
 				else aviso = 4'b0001; //piso 4
 			end
-			if (puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton == 2'b01 || sensor))) 
+			if (puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton == 2'b01 || sensor
+			|| PISO_SOLICITADO(botones,estado)))) 
 			//puertas cerradas o abriendose || (cerrandose && (boton abrir || sensor))
 				salida_puertas = 2'b01; //abrir puertas
 			else if ((puertas == 2'b01 && (boton == 2'b10 || timeout)) || puertas== 2'b10)

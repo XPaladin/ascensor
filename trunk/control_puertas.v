@@ -5,8 +5,8 @@
 * @param in:pisos            Solicitud de los pisos en el ciclo actual.
 * @param in:estado           El estado actual del ascensor.
 * @param in:boton            Si se esta presionando el boton para abrir o cerrar o ninguno.
-* 								-1x abrir
-* 								-01 cerrar
+* 								-01 abrir
+* 								-10 cerrar
 * 								-00 nada
 * @param in:puertas          El estado de las puertas:
 * 								-00 completamente cerradas
@@ -38,7 +38,7 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 	reg trabajando;
 	reg [3:0] aviso;
 	reg [1:0] salida_puertas;
-
+:
 	always@(pisos or estado or boton or sensor or puertas or timeout)
 	begin
 		if ((puertas[0] || puertas[1]) || (!estado[3] && PISO_SOLICITADO(pisos, estado)))
@@ -52,10 +52,10 @@ module CONTROL_PUERTAS (pisos, estado, boton, puertas, timeout, sensor, aviso, s
 				else if (estado[3:2] == 2'b10) aviso = 4'b0010; // piso 3
 				else aviso = 4'b0001; //piso 4
 			end
-			if (puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton[1] == 1'b1 || sensor))) 
+			if (puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton == 2'b01 || sensor))) 
 			//puertas cerradas o abriendose || (cerrandose && (boton abrir || sensor))
 				salida_puertas = 2'b01; //abrir puertas
-			else if ((puertas == 2'b01 && (boton[1] == 1'b1 || timeout)) || puertas== 2'b10)
+			else if ((puertas == 2'b01 && (boton == 2'b10 || timeout)) || puertas== 2'b10)
 			//puertas (abiertas && (boton cerrar || timeout)) || puertas cerrandose 
 				salida_puertas = 2'b10; //cerrar puertas
 			else salida_puertas = 2'b00; //hacer nada

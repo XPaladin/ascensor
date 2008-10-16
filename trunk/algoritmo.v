@@ -42,7 +42,7 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 						end
 						2'b01://piso 2
 						begin
-							if( |s[5:3] || |s[8:9])//solicitudes mas arriba
+							if( |s[5:3] || |s[9:8])//solicitudes mas arriba
 								estado_final[3]=1;//muevete
 							else
 								if( s[0] || s[6]) //solicitudes piso 1
@@ -90,7 +90,7 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 								estado_final[3]=1;//muevete
 							end
 							else
-								if( |s[5:3] || |s[8:9])//solicitudes mas arriba
+								if( |s[5:3] || |s[9:8])//solicitudes mas arriba
 								begin
 									estado_final[3]=1;//muevete
 									estado_final[2]=1;//subiendo

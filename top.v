@@ -32,7 +32,11 @@
 *	-01 abrir
 *	-10 cerrar
 *	-00 nada
-*
+* Motor
+* 	-00 quieto
+* 	-10 abajo
+* 	-11 arriba
+* 	-01 quieto
 */
 /**
  * Modulo que contiene a todos los otros.

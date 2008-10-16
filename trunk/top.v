@@ -22,7 +22,7 @@
  * @param in:botones         Los botones de solicitudes de pisos apretados.
  * @param in:boton_puertas   Si hay botones que controlen las puertas apretados.
  * @param in:estado_puertas  El estado de movimiento de las puertas.
- * @param in:sensor_piso     Sensor que hubo un cambio de piso.
+ * @param in:cambio_piso     Sensor que hubo un cambio de piso.
  * @param in:sensor_puertas  Sensor de objetos entre las puertas.
  * @param out:luces          El estado de las luces de los botones.
  * @param out:display        El estado de los displays de los pisos.
@@ -30,7 +30,7 @@
  * @param out:puertas        Lo que deben hacer las puertas.
  * @param out:motor          Lo que debe hacer el motor.
  */
-module TOP (botones, boton_puertas, estado_puertas, sensor_piso, sensor_puertas, luces, display, aviso, puertas, motor)
+module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas, luces, display, aviso, puertas, motor)
 	input [9:0] botones;
 	input [1:0] boton_puertas;
 	input [1:0] estado_puertas;
@@ -41,5 +41,13 @@ module TOP (botones, boton_puertas, estado_puertas, sensor_piso, sensor_puertas,
 	output [3:0] aviso;
 	output [1:0] puertas;
 	output [1:0] motor;
-	
+
+	wire Q, R, S, T, U, V, W;
+
+	/*
+	TODO los registros y el clock
+	REGISTRADOR registrador (botones, Q, R);
+	ALGORITMO algoritmo (R, S, cambio_piso, T, Q, U, motor);
+	INTERFAZ_SALIDA interfaz_salida (R, 
+	*/
 endmodule

@@ -12,8 +12,8 @@ module TIMEOUT (estado, clk, timeout);
 	input clk;
 	output timeout;
 
-	reg timeout;
 	reg [9:0] count;
+	reg timeout;
 
 	always@(posedge clk)
 	begin

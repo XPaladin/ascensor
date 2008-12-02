@@ -24,7 +24,8 @@
 * 								-00 nada
 * @param out:trabajando      Si es que el control de puertas esta trabajando o no.
 */
-module CONTROL_PUERTAS (pisos, estado,botones, boton, puertas, timeout, sensor, aviso, salida_puertas, trabajando);
+module CONTROL_PUERTAS (clk, pisos, estado, botones, boton, puertas, timeout, sensor, aviso, salida_puertas, trabajando);
+	input clk;
 	input [9:0] pisos;
 	input [3:0] estado;
 	input [1:0] boton;
@@ -40,22 +41,22 @@ module CONTROL_PUERTAS (pisos, estado,botones, boton, puertas, timeout, sensor, 
 	reg [3:0] aviso;
 	reg [1:0] salida_puertas;
 	
-	always@(pisos or estado or botones or boton or sensor or puertas or timeout)
+	always@(posedge clk)
 	begin
-		if ((puertas[0] || puertas[1]) || (!estado[3] && PISO_SOLICITADO(pisos, estado)))
+		if (/* (salida_puertas[0] || salida_puertas[1]) ||*/ (puertas[0] || puertas[1]) || (!estado[3] && PISO_SOLICITADO(pisos, estado)))
 		// puertas abiertas o (no moviendose y este es un piso solicitado) 
 		begin
+			aviso=0;
 			trabajando = 1;
 			if (puertas == 2'b00)//puertas cerradas
 			begin
-				if (estado[3:2] == 2'b00) aviso = 4'b1000; //piso 1
-				else if (estado[3:2] == 2'b01) aviso = 4'b0100; // piso 2
-				else if (estado[3:2] == 2'b10) aviso = 4'b0010; // piso 3
-				else aviso = 4'b0001; //piso 4
+				if (estado[1:0] == 2'b00) aviso = 4'b0001; //piso 1
+				else if (estado[1:0] == 2'b01) aviso = 4'b0010; // piso 2
+				else if (estado[1:0] == 2'b10) aviso = 4'b0100; // piso 3
+				else aviso = 4'b1000; //piso 4
 			end
-			if (puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton == 2'b01 || sensor
-			|| PISO_SOLICITADO(botones,estado)))) 
-			//puertas cerradas o abriendose || (cerrandose && (boton abrir || sensor))
+			if ( puertas == 2'b00 || puertas == 2'b11 || (puertas == 2'b10 && (boton == 2'b01 || sensor || PISO_SOLICITADO(botones, estado))) )
+			// (puertas cerradas || abriendose || (cerrandose && (boton abrir || sensor || boton desde fuera) )
 				salida_puertas = 2'b01; //abrir puertas
 			else if ((puertas == 2'b01 && (boton == 2'b10 || timeout)) || puertas== 2'b10)
 			//puertas (abiertas && (boton cerrar || timeout)) || puertas cerrandose 
@@ -65,6 +66,8 @@ module CONTROL_PUERTAS (pisos, estado,botones, boton, puertas, timeout, sensor, 
 		else //puertas cerradas && (moviendose || piso no solicitado)
 		begin
 			trabajando = 0;
+			aviso = 0;
+			salida_puertas = 0;
 		end
 	end
 
@@ -81,7 +84,7 @@ module CONTROL_PUERTAS (pisos, estado,botones, boton, puertas, timeout, sensor, 
 				(e[0] && !e[1]) && (s[8] || (s[3] && !e[2]) || (s[4] && e[2])) ||
 				//piso 3 && (dentro o (abajo y bajando) o (arriba y subiendo))
 				(e[0] && e[1]) && (s[9] || s[5])
-				//piso 4 && (dentro o bajando)
+				//piso 4 && (dentro o fuera)
 			);
 		end
 	endfunction

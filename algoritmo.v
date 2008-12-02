@@ -27,12 +27,12 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 	always@(posedge clk)
 	begin
 		estado_final=estado_inicial;
-		piso_actual=estado_inicial[1];
+		piso_actual=estado_inicial[0];
 		if(!esperar)
 		begin
 			if(!estado_inicial[3])//quieto
 			begin
-				if(estado_inicial[1])//subiendo
+				if(estado_inicial[2])//subiendo
 				begin
 					case (estado_inicial[1:0])//piso
 						2'b00://piso 1
@@ -126,7 +126,7 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 						estado_final[1:0]=estado_inicial[1:0]+1;
 					else
 						estado_final[1:0]=estado_inicial[1:0]-1;
-					if(PISO_SOLICITADO(s,estado_inicial))
+					if(PISO_SOLICITADO(s,estado_final))
 					begin
 						estado_final[3] = 0;//detente
 					end

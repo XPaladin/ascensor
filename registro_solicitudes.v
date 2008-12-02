@@ -5,13 +5,17 @@
  * @param in:clk  La entrada del reloj.
  * @param out:Q   La salida de la informacion almacenada.
  */
-module REGISTRO_SOLICITUDES (D, clk, Q);
+module REGISTRO_SOLICITUDES (D, clk, Q, reset);
 	input [9:0] D;
 	input clk;
+	input reset;
 	output [9:0] Q;
 
 	reg [9:0] Q;
 
 	always@(posedge clk)
-		Q = D;
+		if(reset)
+			Q = 0;
+		else 
+			Q = D;
 endmodule

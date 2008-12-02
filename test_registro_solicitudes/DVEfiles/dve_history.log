@@ -1,0 +1,22 @@
+gui_open_db -file /home/gjorquer/ascensor/test_registro_solicitudes/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   REGISTRO_SOLICITUDES_test_top
+gui_list_select -id Hier.1 {  REGISTRO_SOLICITUDES_test_top   REGISTRO_SOLICITUDES_test_top.top_io   }
+gui_list_expand -id Hier.1   REGISTRO_SOLICITUDES_test_top.top_io
+gui_list_action -id  Hier.1   REGISTRO_SOLICITUDES_test_top.top_io
+gui_open_window Wave
+gui_list_add -id Wave.1 -after {New Group} { {REGISTRO_SOLICITUDES_test_top.top_io.clk} } -insertionbar
+gui_wv_zoom_timerange -id  Wave.1 0 296
+gui_clear_target_frame  TopLevel.2
+gui_list_select -id Hier.1 {  REGISTRO_SOLICITUDES_test_top.top_io   REGISTRO_SOLICITUDES_test_top.top_io   }
+
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { REGISTRO_SOLICITUDES_test_top.top_io } -insertionbar
+gui_list_expand -id  Wave.1   {REGISTRO_SOLICITUDES_test_top.top_io.Q[9:0]}
+gui_list_collapse -id  Wave.1   {REGISTRO_SOLICITUDES_test_top.top_io.Q[9:0]}
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_marker_select -id  Wave.1 { C1 }
+gui_marker_move -id  Wave.1 C1 3628
+gui_clear_target_frame  TopLevel.2

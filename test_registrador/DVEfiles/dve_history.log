@@ -1,0 +1,35 @@
+gui_open_db -file /home/gjorquer/ascensor/test_registrador/vcdplus.vpd -design V1
+gui_list_select -id Hier.1 {  REGISTRADOR_test_top   REGISTRADOR_test_top   }
+gui_list_expand -id  Hier.1   REGISTRADOR_test_top
+gui_list_expand -id  Hier.1   REGISTRADOR_test_top.t
+gui_list_collapse -id  Hier.1   REGISTRADOR_test_top.t
+gui_list_select -id Hier.1 {  REGISTRADOR_test_top   REGISTRADOR_test_top.top_io   }
+gui_list_select -id Hier.1 {  REGISTRADOR_test_top.top_io   REGISTRADOR_test_top.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { REGISTRADOR_test_top.top_io } -insertionbar
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 0.5
+gui_wv_zoom_timerange -id  Wave.1 0 38
+gui_marker_select -id  Wave.1 { C1 }
+gui_marker_move -id  Wave.1 C1 0
+gui_marker_move -id  Wave.1 C1 6
+gui_marker_move -id  Wave.1 C1 8
+gui_wv_zoom_timerange -id  Wave.1 0 2
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_list_expand -id  Wave.1   {REGISTRADOR_test_top.top_io.botones[9:0]}
+gui_list_collapse -id  Wave.1   {REGISTRADOR_test_top.top_io.botones[9:0]}
+gui_marker_move -id  Wave.1 C1 20
+gui_list_expand -id  Wave.1   {REGISTRADOR_test_top.top_io.botones[9:0]}
+gui_list_collapse -id  Wave.1   {REGISTRADOR_test_top.top_io.botones[9:0]}
+gui_list_expand -id  Wave.1   {REGISTRADOR_test_top.top_io.botones[9:0]}
+gui_marker_move -id  Wave.1 C1 19
+gui_list_expand -id  Wave.1   {REGISTRADOR_test_top.top_io.solicitudes_inicial[9:0]}
+gui_list_expand -id  Wave.1   {REGISTRADOR_test_top.top_io.solicitudes_final[9:0]}
+gui_marker_move -id  Wave.1 C1 20
+gui_clear_target_frame  TopLevel.2

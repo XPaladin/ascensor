@@ -1,0 +1,228 @@
+gui_filter -id Hier.1   -remove
+gui_open_db -file /home/gjorquer/ascensor/test_timeout/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   TIMEOUT_test_totop
+gui_list_select -id Hier.1 {  TIMEOUT_test_totop   TIMEOUT_test_totop.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { TIMEOUT_test_totop.top_io } -insertionbar
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_wv_zoom_timerange -id  Wave.1 0 9268
+gui_wv_zoom_timerange -id  Wave.1 0 9960
+gui_marker_move -id  Wave.1 C1 3980
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_clear_target_frame  TopLevel.2
+gui_open_db -file /home/gjorquer/ascensor/test_timeout/vcdplus.vpd -design V2
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { TIMEOUT_test_totop.top_io } -insertionbar
+gui_clear_target_frame  TopLevel.2
+gui_close_db -file /home/gjorquer/ascensor/test_timeout/vcdplus.vpd -design V1
+gui_open_db -file /home/gjorquer/ascensor/test_timeout/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   TIMEOUT_test_totop
+gui_list_select -id Hier.1 {  TIMEOUT_test_totop   TIMEOUT_test_totop.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { TIMEOUT_test_totop.top_io } -insertionbar
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_clear_target_frame  TopLevel.2
+gui_list_collapse -id  Hier.1   TIMEOUT_test_totop
+gui_close_db -file /home/gjorquer/ascensor/test_timeout/vcdplus.vpd -design V1
+gui_open_db -file /home/gjorquer/ascensor/test_apagador_solicitudes/vcdplus.vpd -design V1
+gui_open_window Wave
+gui_list_add -id Wave.1 -after {New Group} { {APAGADOR_SOLICITUDES_test_top} } -insertionbar
+gui_list_select -id Wave.1 {  APAGADOR_SOLICITUDES_test_top.SystemClock   }
+gui_clear_target_frame  TopLevel.2
+gui_use_schematics 
+gui_sch_show -name APAGADOR_SOLICITUDES_test_top
+gui_schematic_select {APAGADOR_SOLICITUDES_test_top}
+gui_set_window_attributes -window Source.1 -dock_state undocked
+gui_toggle_pane Hier
+gui_list_expand -id  Hier.1   APAGADOR_SOLICITUDES_test_top
+gui_list_select -id Hier.1 {  APAGADOR_SOLICITUDES_test_top.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { APAGADOR_SOLICITUDES_test_top.top_io } -insertionbar
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_marker_move -id  Wave.1 C1 8907
+gui_scroll -window Wave.1 -hrel .2
+gui_list_expand -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.o[9:0]}
+gui_list_collapse -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.o[9:0]}
+gui_list_expand -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.o[9:0]}
+gui_list_expand -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.s[9:0]}
+gui_marker_move -id  Wave.1 C1 11550
+gui_marker_move -id  Wave.1 C1 10000
+gui_clear_target_frame  TopLevel.2
+gui_close_db -file /home/gjorquer/ascensor/test_apagador_solicitudes/vcdplus.vpd -design V1
+gui_open_db -file /home/gjorquer/ascensor/test_apagador_solicitudes/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   APAGADOR_SOLICITUDES_test_top
+gui_list_select -id Hier.1 {  APAGADOR_SOLICITUDES_test_top   APAGADOR_SOLICITUDES_test_top.top_io   }
+gui_list_expand -id  Hier.1   APAGADOR_SOLICITUDES_test_top.top_io
+gui_list_select -id Hier.1 {  APAGADOR_SOLICITUDES_test_top.top_io   APAGADOR_SOLICITUDES_test_top.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { APAGADOR_SOLICITUDES_test_top.top_io } -insertionbar
+gui_wv_zoom_timerange -id  Wave.1 0 312
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_list_expand -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.s[9:0]}
+gui_list_expand -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.o[9:0]}
+gui_wv_scroll_hslidermove -id  Wave.1 3136
+gui_list_select -id Wave.1 {  {APAGADOR_SOLICITUDES_test_top.top_io.o[0]}   }
+gui_list_collapse -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.s[9:0]}
+gui_list_collapse -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.o[9:0]}
+gui_marker_move -id  Wave.1 C1 145195
+gui_wv_scroll_hslidermove -id  Wave.1 0
+gui_wv_scroll_hslidermove -id  Wave.1 0
+gui_marker_move -id  Wave.1 C1 25984
+gui_marker_move -id  Wave.1 C1 30000
+gui_list_expand -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.o[9:0]}
+gui_list_expand -id  Wave.1   {APAGADOR_SOLICITUDES_test_top.top_io.s[9:0]}
+gui_clear_target_frame  TopLevel.2
+gui_close_db -file /home/gjorquer/ascensor/test_apagador_solicitudes/vcdplus.vpd -design V1
+gui_open_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   CONTROL_PUERTAS_test_top
+gui_list_select -id Hier.1 {  CONTROL_PUERTAS_test_top   CONTROL_PUERTAS_test_top.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { CONTROL_PUERTAS_test_top.top_io } -insertionbar
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 2
+gui_zoom -window Wave.1 -factor 2
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}   }
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}   {CONTROL_PUERTAS_test_top.top_io.aviso[3]}   }
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.aviso[3]}   {CONTROL_PUERTAS_test_top.top_io.aviso[2]}   }
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.aviso[2]}   {CONTROL_PUERTAS_test_top.top_io.aviso[2]}   }
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.aviso[2]}   {CONTROL_PUERTAS_test_top.top_io.aviso[1]}   }
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.aviso[1]}   {CONTROL_PUERTAS_test_top.top_io.aviso[0]}   }
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.pisos[9:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.pisos[9:0]}
+gui_clear_target_frame  TopLevel.2
+gui_open_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V2
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { CONTROL_PUERTAS_test_top.top_io } -insertionbar
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_clear_target_frame  TopLevel.2
+gui_close_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V1
+gui_open_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   CONTROL_PUERTAS_test_top
+gui_list_select -id Hier.1 {  CONTROL_PUERTAS_test_top   CONTROL_PUERTAS_test_top.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { CONTROL_PUERTAS_test_top.top_io } -insertionbar
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_marker_move -id  Wave.1 C1 575
+gui_get_drivers -id Wave.1 -signal {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}
+gui_clear_target_frame  TopLevel.2
+gui_close_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V1
+gui_open_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   CONTROL_PUERTAS_test_top
+gui_list_select -id Hier.1 {  CONTROL_PUERTAS_test_top   CONTROL_PUERTAS_test_top.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { CONTROL_PUERTAS_test_top.top_io } -insertionbar
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}   }
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}
+gui_list_add -id Wave.1 -after top_io {{CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}} -insertionbar
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}   {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}   }
+gui_list_delete -id Wave.1 -selected
+gui_list_select -id Wave.1 {  CONTROL_PUERTAS_test_top.top_io.trabajando   }
+gui_list_select -id Wave.1 {  CONTROL_PUERTAS_test_top.top_io.trabajando   }
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}   }
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.boton[1:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.boton[1:0]}
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.botones[9:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.botones[9:0]}
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.botones[9:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.botones[9:0]}
+gui_marker_move -id  Wave.1 C1 500
+gui_marker_move -id  Wave.1 C1 578
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.aviso[3:0]}   CONTROL_PUERTAS_test_top.top_io.trabajando   }
+gui_clear_target_frame  TopLevel.2
+gui_close_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V1
+gui_open_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   CONTROL_PUERTAS_test_top
+gui_list_select -id Hier.1 {  CONTROL_PUERTAS_test_top   CONTROL_PUERTAS_test_top.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { CONTROL_PUERTAS_test_top.top_io } -insertionbar
+gui_list_select -id Wave.1 {  CONTROL_PUERTAS_test_top.top_io.trabajando   }
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_zoom -window Wave.1 -factor 0.5
+gui_marker_move -id  Wave.1 C1 1053
+gui_marker_move -id  Wave.1 C1 883
+gui_marker_move -id  Wave.1 C1 1019
+gui_marker_move -id  Wave.1 C1 1040
+gui_marker_move -id  Wave.1 C1 1144
+gui_marker_move -id  Wave.1 C1 816
+gui_marker_move -id  Wave.1 C1 552
+gui_marker_move -id  Wave.1 C1 656
+gui_list_select -id Wave.1 {  CONTROL_PUERTAS_test_top.top_io.trabajando   {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}   }
+gui_clear_target_frame  TopLevel.2
+gui_close_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V1
+gui_open_db -file /home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd -design V1
+gui_list_expand -id  Hier.1   CONTROL_PUERTAS_test_top
+gui_list_select -id Hier.1 {  CONTROL_PUERTAS_test_top   CONTROL_PUERTAS_test_top.top_io   }
+gui_open_window Wave
+gui_list_add -id Wave.1 -from Hier.1 -after {New Group} { CONTROL_PUERTAS_test_top.top_io } -insertionbar
+gui_list_select -id Wave.1 {  {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}   }
+gui_list_expand -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}
+gui_list_collapse -id  Wave.1   {CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]}
+gui_marker_move -id  Wave.1 C1 123
+gui_marker_move -id  Wave.1 C1 126
+gui_marker_move -id  Wave.1 C1 140
+gui_marker_move -id  Wave.1 C1 154
+gui_marker_move -id  Wave.1 C1 160
+gui_marker_move -id  Wave.1 C1 168
+gui_marker_move -id  Wave.1 C1 172
+gui_marker_move -id  Wave.1 C1 177
+gui_marker_move -id  Wave.1 C1 187
+gui_get_drivers -id Wave.1 -signal CONTROL_PUERTAS_test_top.top_io.clk
+gui_clear_target_frame  TopLevel.2

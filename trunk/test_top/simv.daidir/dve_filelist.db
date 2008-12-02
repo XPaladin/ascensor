@@ -1,0 +1,11 @@
+/home/gjorquer/ascensor/apagador_solicitudes.v
+/home/gjorquer/ascensor/control_puertas.v
+/home/gjorquer/ascensor/test_top/top_test_top.sv
+/home/gjorquer/ascensor/test_top/top_io.sv
+/home/gjorquer/ascensor/timeout.v
+/home/gjorquer/ascensor/registro_solicitudes.v
+/home/gjorquer/ascensor/algoritmo.v
+/home/gjorquer/ascensor/registrador.v
+/home/gjorquer/ascensor/test_top/test.sv
+/home/gjorquer/ascensor/registro_estado.v
+/home/gjorquer/ascensor/top.v

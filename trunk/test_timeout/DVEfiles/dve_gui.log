@@ -1,0 +1,13 @@
+
+/home/gjorquer/ascensor/test_timeout/vcdplus.vpd opened successfully
+Error: Database has been opened in V1./home/gjorquer/ascensor/test_timeout/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_apagador_solicitudes/vcdplus.vpd opened successfully
+Loading db file '/tools/synopsys/vcs-mx_Y-2006.06-SP2/gui/dve/libraries/syn/generic.sdb'
+Loading db file '/tools/synopsys/vcs-mx_Y-2006.06-SP2/gui/dve/libraries/syn/generic.sdb'
+/home/gjorquer/ascensor/test_apagador_solicitudes/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+Error: Database has been opened in V1./home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+Warning: Cannot find any driver or load for signal: CONTROL_PUERTAS_test_top.top_io.salida_puertas[1:0]/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+2 driver(s) found for signal: CONTROL_PUERTAS_test_top.top_io.clk

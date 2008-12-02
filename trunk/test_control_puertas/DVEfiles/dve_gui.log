@@ -1,0 +1,22 @@
+
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+Loading db file '/tools/synopsys/vcs-mx_Y-2006.06-SP2/gui/dve/libraries/syn/generic.sdb'
+Warning: Unable to open path window: no path info for the object(s) specified./home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+Error: Database has been opened in V1./home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+Warning: Cannot find any driver or load for signal: CONTROL_PUERTAS_test_top.top_io.aviso[3:0]
+Warning: Cannot find any driver or load for signal: CONTROL_PUERTAS_test_top.top_io.puertas[1:0]/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_control_puertas/vcdplus.vpd opened successfully
+Warning: Cannot find any driver or load for signal: CONTROL_PUERTAS_test_top.top_io.botones[9:0]
+Warning: Cannot find any driver or load for signal: CONTROL_PUERTAS_test_top.top_io.botones[9:0]/home/gjorquer/ascensor/test_top/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_top/vcdplus.vpd opened successfully
+/home/gjorquer/ascensor/test_top/vcdplus.vpd opened successfully
+Found results at time 12500
+    TOP_test_top.io.clk
+/home/gjorquer/ascensor/test_top/vcdplus.vpd opened successfully

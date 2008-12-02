@@ -14,8 +14,8 @@ check_design
 set_max_area 5
 
 # Compile
-compile_ultra
-#compile
+#compile_ultra
+compile
 
 # Save and exit
 write -f verilog -hier -out mapped.v

@@ -53,13 +53,15 @@
  * @param out:puertas        Lo que deben hacer las puertas.
  * @param out:motor          Lo que debe hacer el motor.
  */
-module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas, clk, luces, display, aviso, puertas, motor);
+module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas, reset ,clk, luces, display, aviso, puertas, motor);
 	input [9:0] botones;
 	input [1:0] boton_puertas;
 	input [1:0] estado_puertas;
 	input cambio_piso;
 	input sensor_puertas;
 	input clk;
+	input reset;
+
 	output [9:0] luces;
 	output [3:0] display;
 	output [3:0] aviso;
@@ -69,19 +71,24 @@ module TOP (botones, boton_puertas, estado_puertas, cambio_piso, sensor_puertas,
 	//wire clk;
 	wire [9:0] reg_sf;
 	wire [9:0] rsol_sf;
-	wire [9:0] algo_sf;
+	wire [9:0] apa_sf;
 	wire [3:0] algo_ef;
 	wire [3:0] rest_ef;
 	wire puer_tr;
 	wire time_time;
+	wire [9:0] count;
+	
 
-	REGISTRADOR 			mod1 (botones, algo_sf, reg_sf);
-	ALGORITMO 			 	mod3 (rsol_sf, rest_ef, cambio_piso, puer_tr, clk, algo_sf, algo_ef, motor);
-	TIMEOUT					mod5 (estado_puertas, clk, time_time);
-	CONTROL_PUERTAS			mod7 (rsol_sf, rest_ef, botones, boton_puertas, estado_puertas, time_time, sensor_puertas, aviso, puertas, puer_tr);
-	REGISTRO_SOLICITUDES 	mod2 (reg_sf, clk, rsol_sf);
-	REGISTRO_ESTADO			mod4 (algo_ef, clk, rest_ef);
+	REGISTRADOR 			mod1 (botones, apa_sf, reg_sf);
+    APAGADOR_SOLICITUDES    mod2 (rsol_sf, rest_ef, puer_tr, clk, apa_sf); 
+	ALGORITMO 			 	mod3 (rsol_sf, rest_ef, cambio_piso, puer_tr, clk, algo_ef);
+	TIMEOUT					mod4 (estado_puertas, clk, time_time, count);
+	CONTROL_PUERTAS			mod5 (clk, rsol_sf, rest_ef, botones, boton_puertas, estado_puertas, time_time, sensor_puertas, aviso, puertas, puer_tr);
+	REGISTRO_SOLICITUDES 	mod6 (reg_sf, clk, rsol_sf,reset);
+	REGISTRO_ESTADO			mod7 (algo_ef, clk, rest_ef,reset);
+	
 	// Salida a las luces y al display
-	assign luces = reg_sf;
+	assign luces = rsol_sf;
 	assign display = rest_ef;
+	assign motor = rest_ef[3:2];
 endmodule

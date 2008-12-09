@@ -143,9 +143,9 @@ module ALGORITMO (s, estado_inicial, cambio_piso, esperar, clk, estado_final);
 			PISO_SOLICITADO = (
 				(!e[0] && !e[1]) && (o[6] || o[0]) ||
 				//piso 1 && (dentro o fuera llaman)
-				(!e[0] && e[1]) && (o[7] || (o[1] && !e[2]) || (o[2] && e[2])) ||
+				(e[0] && !e[1]) && (o[7] || (o[1] && !e[2]) || (o[2] && e[2])) ||
 				//piso 2 && (dentro o (hacia abajo y bajando) o (hacia arriba y subiendo))
-				(e[0] && !e[1]) && (o[8] || (o[3] && !e[2]) || (o[4] && e[2])) ||
+				(!e[0] && e[1]) && (o[8] || (o[3] && !e[2]) || (o[4] && e[2])) ||
 				//piso 3 && (dentro o (abajo y bajando) o (arriba y subiendo))
 				(e[0] && e[1]) && (o[9] || o[5])
 				//piso 4 && (dentro o bajando)

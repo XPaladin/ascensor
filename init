@@ -1,0 +1,11 @@
+#!/bin/bash
+
+UPPER=`echo $1 | sed 's/.*/\U&/'`
+
+mkdir test_$1
+cd test_$1
+
+ntb_template -t $UPPER ../$1.v
+rm *.tmp *.vrh
+cp $UPPER.test_top.v ${1}_io.sv
+mv $UPPER.test_top.v ${1}_test_top.sv

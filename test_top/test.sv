@@ -103,8 +103,8 @@ program automatic test(top_io.TB top);
 		#1100
 		top.estado_puertas<=2'b10;
 
-		// Aprietan el boton 1 desde dentro
-		top.botones[6]<=1;
+		// Aprietan el boton 2 desde dentro
+		top.botones[7]<=1;
 		#150
 		// Suelta el boton
 		top.botones<=0;
@@ -115,9 +115,12 @@ program automatic test(top_io.TB top);
 		
 		// Puertas abriendose
 		top.estado_puertas<=2'b11;
-		
-		// Aprieta piso 2 (desde dentro)
-		top.botones[7]<=1;
+
+		//Entra (deja de interponerse)
+		top.sensor_puertas<=0;
+		#50	
+		// Aprieta piso 4 (desde dentro)
+		top.botones[9]<=1;
 		#150
 		
 		// Suelta el boton
@@ -134,6 +137,72 @@ program automatic test(top_io.TB top);
 		// Puertas cerradas
 		#500
 		top.estado_puertas<=0;
+		
+		// Cambio piso (al 2)
+		#2000
+		top.cambio_piso=~top.cambio_piso;
+		
+		// Se abren las puertas
+		#100
+		top.estado_puertas<=2'b11;
+	
+		// Puertas abiertas
+		#500
+		top.estado_puertas<=2'b01;
 
+		// Aprieta cerrar puertas
+		#100
+		top.boton_puertas<=2'b10;
+		
+		// Puertas cerrandose
+		#150
+		top.estado_puertas<=2'b10;
+		
+		// Suelta boton
+		#200
+		top.boton_puertas<=0;
+
+		// Apretar abrir puertas
+		#100
+		top.boton_puertas<=2'b01;
+		
+		// Se abren las puertas
+		#100
+		top.estado_puertas<=2'b11;
+
+		// Suelta el boton
+		#100
+		top.boton_puertas<=0;
+		
+		// Puertas abiertas
+		#500
+		top.estado_puertas<=2'b01;
+
+		// Timeout
+		#1100
+		
+		//Puertas cerrandose
+		top.estado_puertas<=2'b10;
+
+		//Puertas cerradas
+		#500
+		top.estado_puertas<=0;
+
+		//Cambio de piso (2 veces)
+		#1000
+		top.cambio_piso=~top.cambio_piso;
+		#1000
+		top.cambio_piso=~top.cambio_piso;
+		
+		//Puertas se empiezan a abrir
+		#150
+		top.estado_puertas<=2'b11;
+		//Puertas completamente abiertas
+		#500
+		top.estado_puertas<=2'b01;
+		#1100
+		top.estado_puertas<=2'b10;
+		#500
+		top.estado_puertas<=0;
 	endtask
 endprogram

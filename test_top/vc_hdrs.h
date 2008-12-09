@@ -1,6 +1,6 @@
 /*************************************
 
-   Version Y-2006.06-SP2 -- Tue Dec  2 15:18:53 2008
+   Version Y-2006.06-SP2 -- Tue Dec  2 17:26:14 2008
 
    Copyright (c) 1991-2006 by Synopsys Inc.
 
